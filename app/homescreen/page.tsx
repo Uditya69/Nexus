@@ -1,4 +1,3 @@
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import React from "react";
 import Header from "./header";
@@ -8,7 +7,7 @@ import { ArrowRight } from "lucide-react";
 
 function HomeScreen() {
   return (
-    <body className="h-fit">
+    <body className="">
       <Header />
       <main className=" flex flex-col font-mono p-5 items-center ">
         <div className="flex  dark:bg-slate-900 justify-between items-center  rounded-lg max-w-screen-2xl bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900">
