@@ -3,7 +3,7 @@ import HomeScreen from './homescreen/page'
 
 export default function Home() {
   return (
-    <main className="">
+    <main >
       <HomeScreen/>      
     </main>
 
