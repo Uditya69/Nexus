@@ -9,7 +9,7 @@ function HomeScreen() {
   return (
     <div >
       <Header />
-      <div className=" flex flex-col font-mono p-5 items-center ">
+      <div className=" flex flex-col font-mono p-5 pt-0 pb-3 items-center ">
         <div className="flex  dark:bg-slate-900 justify-between items-center  rounded-lg max-w-screen-2xl bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900">
           <div className="p-10 max-w-5xl flex flex-col   text-slate-300 space-y-4">
             <div className="text-5xl  font-extrabold">
