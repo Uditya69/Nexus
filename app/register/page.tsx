@@ -1,12 +1,73 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import logo from "@/assets/logo.png";
 import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth,db, storage } from "@/firebase";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { doc, setDoc } from "firebase/firestore";
+import { useRouter } from "next/navigation";
+
+
 function register() {
+  const [err, setErr] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
+//@ts-ignore
+  const handlesubmit=async (e)=>{
+    setLoading(true);
+    e.preventDefault();
+    const username = e.target[0].value;
+    const email = e.target[1].value;
+    const password = e.target[2].value;
+    const file = e.target[3].files[0];
+
+    try {
+      //Create user
+      const res = await createUserWithEmailAndPassword(auth, email, password);
+
+      //Create a unique image name
+      const date = new Date().getTime();
+      const storageRef = ref(storage, `${username + date}`);
+
+      await uploadBytesResumable(storageRef, file).then(() => {
+        getDownloadURL(storageRef).then(async (downloadURL) => {
+          try {
+            //Update profile
+            await updateProfile(res.user, {
+//@ts-ignore           
+              username,
+              photoURL: downloadURL,
+            });
+            //create user on firestore
+            await setDoc(doc(db, "users", res.user.uid), {
+              uid: res.user.uid,
+              username,
+              email,
+              photoURL: downloadURL,
+            });
+
+            //create empty user chats on firestore
+            await setDoc(doc(db, "userChats", res.user.uid), {});
+            router.replace('/chatscreen')
+          } catch (err) {
+            console.log(err);
+            setErr(true);
+            setLoading(false);
+          }
+        });
+      });
+    } catch (err) {
+      setErr(true);
+      setLoading(false);
+    }
+
+  }
+
   return (
     <div className="h-screen flex items-center justify-center bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900  ">
       <div className="bg-gradient-to-r from-gray-950 via-gray-900 to-gray-950 p-5 w-4/5 h-4/5 rounded-xl space-x-5 flex flex-col items-center justify-around">
@@ -19,8 +80,9 @@ function register() {
           Ready to chat? Let's begin by creating your account.
         </p>
 
-        <div className="flex flex-col w-fit  items-center p-3">
-          <div className="grid space-y-3">
+        <div className="flex flex-col w-fit  items-center p-3" >
+          
+          <form className="grid space-y-3" onSubmit={handlesubmit}>
             <input
               placeholder="Username"
               required
@@ -41,7 +103,7 @@ function register() {
             <Input id="picture" type="file" />
           </div>
           <Button className="w-fit self-start mx-3">Register</Button>
-          </div>
+          </form>
         </div>
         <p>
           Do have an account?
@@ -59,3 +121,11 @@ function register() {
 }
 
 export default register;
+function setLoading(arg0: boolean) {
+  throw new Error("Function not implemented.");
+}
+
+function setErr(arg0: boolean) {
+  throw new Error("Function not implemented.");
+}
+
