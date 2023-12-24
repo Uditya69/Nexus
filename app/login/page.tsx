@@ -39,9 +39,10 @@ function Login() {
 
         <form className="flex flex-col w-fit items-center  p-3" onSubmit={handleSubmit}>
           <div className="grid space-y-3">
-            <input placeholder="Email-ID" className="rounded-xl p-2 m-2" />
-            <div className="">
-              <input placeholder="password" className="rounded-xl p-2 m-2" />
+            <input placeholder="Email-ID" type="email" className="rounded-xl p-2 m-2" />
+            <div className=" flex flex-row items-center gap-x-2">
+              <input placeholder="password" type="password" className="rounded-xl p-2 m-2" />
+              <input type="checkbox" /> visibility
             </div>
             <Button className="w-fit self-start mx-3">Login</Button>
             {err && <span>Something went wrong</span>}
