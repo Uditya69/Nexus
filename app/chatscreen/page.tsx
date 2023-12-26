@@ -15,30 +15,28 @@ function ProtectedRoute({ children }: ProtectedRouteProps) {
   const router = useRouter();
 
   if (!currentUser) {
-    // If user is not logged in, redirect to login page
-    router.replace('/login');
-    return null; 
+    router.replace("/login");
+    return null;
   }
 
-  // If user is logged in, render the protected content
   return <>{children}</>;
 }
 
 function ChatScreen() {
   return (
     <ProtectedRoute>
-      <div className=" flex flex-row p-2 gap-x-2 mx-auto my-auto justify-between items-center">
-      <div className="flex flex-row gap-x-2 ">
-      <Sidebar />
-      <Chat/>
-      </div>
-      <div className="">
-      <Navbar/>
-      </div>
+      <div className=" flex flex-row  gap-x-2 mx-auto my-auto justify-between items-center bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900">
+       <div>{/*empty div*/} </div>
+        <div className="flex flex-row gap-x-3 bg-neutral-950">
+          <Sidebar />
+         <div className="w-7xl"> <Chat /></div>
+        </div>
+        <div className="">
+          <Navbar />
+        </div>
       </div>
     </ProtectedRoute>
   );
 }
 
 export default ChatScreen;
-

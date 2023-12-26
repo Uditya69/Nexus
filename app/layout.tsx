@@ -5,6 +5,7 @@ import NextTopLoader from "nextjs-toploader";
 
 import { AuthContextProvider } from "./context/AuthContext";
 import { ThemeProvider } from "./components/theme-provider";
+import { ChatContextProvider } from "./context/ChatContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,7 +35,10 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <NextTopLoader />
-          <AuthContextProvider>{children}</AuthContextProvider>
+          <AuthContextProvider>
+            
+            <ChatContextProvider> {children}</ChatContextProvider>
+          </AuthContextProvider>
         </ThemeProvider>
       </body>
     </html>

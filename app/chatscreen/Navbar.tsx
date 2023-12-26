@@ -11,14 +11,14 @@ import { auth } from "@/firebase";
 function Navbar() {
   return (
     <div className="flex flex-col place-items-center my-auto gap-5">
-      <Link href={"/"}>
+      <Link href={"/"} className="hover:bg-black hover:bg-opacity-20 rounded-lg">
         <Image src={logo} alt="" height={50} />{" "}
       </Link>
 
-      <Button className="bg-transparent" onClick={()=>signOut(auth)}>
+      <Button className="bg-transparent hover:bg-black hover:bg-opacity-20" onClick={()=>signOut(auth)}>
         <IoIosLogOut color="white" size={35} />
       </Button>
-      <ModeToggle />
+      <ModeToggle  />
     </div>
   );
 }
