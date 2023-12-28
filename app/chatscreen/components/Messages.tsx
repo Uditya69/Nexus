@@ -4,21 +4,16 @@ import { ChatContext } from '@/app/context/ChatContext';
 import { db } from '@/firebase';
 import { onSnapshot, doc } from 'firebase/firestore';
 
-interface MessageType {
-  id: string;
-  senderId: string;
-  text: string;
-}
+
 
 function Messages() {
-  const [messages, setMessages] = useState<MessageType[]>([]);
+  const [messages, setMessages] = useState([]);
   const { data } = useContext(ChatContext);
 
   useEffect(() => {
     const unSub = onSnapshot(doc(db, "chats", data.chatId), (doc) => {
-      if (doc.exists() && doc.data().messages) {
-        setMessages(doc.data().messages);
-      }
+    doc.exists() && setMessages(doc.data().messages);
+      
     });
 
     return () => {

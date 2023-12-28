@@ -18,6 +18,11 @@ function Input() {
   const { currentUser } = useContext(AuthContext);
   const { data } = useContext(ChatContext);
 
+  const handleKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      handleSend();
+    }
+  };
   const handleSend = async () => {
     const messageId = uuidv4(); 
     await updateDoc(doc(db, "chats", data.chatId), {
@@ -28,6 +33,7 @@ function Input() {
         date: Timestamp.now(),
       }),
     });
+    
 
     await updateDoc(doc(db, "userChats", currentUser.uid), {
       [data.chatId + ".lastMessage"]: {
@@ -53,6 +59,7 @@ function Input() {
         className="p-3 rounded-lg bg-transparent w-full border-none"
         onChange={(e) => setText(e.target.value)}
         value={text}
+        onKeyDown={handleKey}
       />
       <Button
         className=" border-0 bg-transparent hover:bg-transparent"

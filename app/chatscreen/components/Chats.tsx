@@ -5,29 +5,18 @@ import { db } from '@/firebase';
 import { AuthContext } from '@/app/context/AuthContext';
 import { ChatContext } from '@/app/context/ChatContext';
 
-interface ChatData {
-  chats: Array<{
-    userInfo: {
-      displayName: string;
-      photoURL: string;
-    };
-    lastMessage?: {
-      text: string;
-      date: Timestamp;
-    };
-  }>;
-}
 
 function Chats() {
-  const [chats, setChats] = useState<Array<ChatData["chats"][0]>>([]);
-  const currentUser = useContext(AuthContext);
+  const [chats, setChats] = useState([]);
+  const {currentUser} = useContext(AuthContext);
+  const {dispatch} = useContext(ChatContext);
 
   useEffect(() => {
     const getChats = () => {
       const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
         console.log("Current data: ", doc.data());
-        const data = doc.data() as ChatData;
-        setChats(data?.chats || []);
+      
+        setChats(doc.data());
       });
 
       return () => {
@@ -37,34 +26,29 @@ function Chats() {
 
     currentUser.uid && getChats();
   }, [currentUser.uid]);
-
-  const contextValue = useContext(ChatContext);
-  const dispatch = contextValue.dispatch;
-
-  const handleSelect = (user: { displayName: string; photoURL: string; }) => {
-    //@ts-ignore
-    dispatch({ type: "CHANGE_USER", payload: user });
+  
+  const handleSelect = (u) => {
+    dispatch({ type: "CHANGE_USER", payload: u });
   };
-
+console.log(Object.entries(chats))
   return (
     <div className="chats">
-      {chats
-        .sort((a, b) => (b.lastMessage?.date.seconds || 0) - (a.lastMessage?.date.seconds || 0))
-        .map((chat) => (
-          <div
-            className="userChat"
-            key={chat.userInfo.displayName}
-            onClick={() => handleSelect(chat.userInfo)}
-          >
-            <img src={chat.userInfo.photoURL} alt="" />
-            <div className="userChatInfo">
-              <span>{chat.userInfo.displayName}</span>
-              <p>{chat.lastMessage?.text}</p>
-            </div>
+      {Object.entries(chats)?.sort((a,b)=>b[1].date - a[1].date).map((chat) => (
+        <div
+          className=" flex flex-row items-center gap-2 p-2"
+          key={chat[0]}
+          onClick={() => handleSelect(chat[1].userInfo)}
+        >
+          <img src={chat[1].userInfo.photoURL} alt="" className='h-7 w-7 rounded-full'/>
+          <div className="userChatInfo">
+            <span>{chat[1].userInfo.displayName}</span>
+            <p>{chat[1].lastMessage?.text}</p>
           </div>
-        ))}
+        </div>
+      ))}
     </div>
   );
-}
+};
 
 export default Chats;
+

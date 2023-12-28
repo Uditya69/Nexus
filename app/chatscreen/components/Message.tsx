@@ -36,10 +36,11 @@ const Message: React.FC<{ message: MessageProps }> = ({ message }) => {
               : data.user.photoURL || "fallback_image_url"
           }
           alt=""
+          className="h-7 w-7 rounded-full"
         />
         <span className="rounded-3xl border bg-neutral-800 p-3">
           <p>{message.text}</p>
-          {message.img && <img src={message.img} alt="" />}
+          {message.img && <img src={message.img} alt="" className="h-7 w-7 rounded-full"/>}
         </span>
       </div>
     </div>
