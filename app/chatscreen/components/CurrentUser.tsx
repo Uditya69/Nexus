@@ -5,9 +5,9 @@ function CurrentUser() {
     const {currentUser} = useContext(AuthContext)
 
   return (
-    <div className='flex items-center gap-5 px-2 p-2 bg-slate-600'>
-        <img src={currentUser.photoURL} alt="" className='h-12 rounded-full' />
-        <span>{currentUser.displayName}</span>
+    <div className='flex items-center gap-5 px-2 p-2 bg-yellow-800 bg-opacity-25'>
+        <img src={currentUser.photoURL} alt="" className='h-12 w-12 rounded-full' />
+        <span className='text-2xl font-mono'>{currentUser.displayName}</span>
     </div>
   )
 }

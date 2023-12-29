@@ -53,7 +53,7 @@ function Input() {
   };
 
   return (
-    <div className="flex flex-row w-full justify-between px-3 pt-2 pb-0 rounded-t-lg bg-slate-800">
+    <div className="flex flex-row w-full justify-between px-3 pt-2 pb-0 rounded-t-lg bg-opacity-25 bg-[#432A7E]">
       <input
         placeholder="Enter a message..."
         className="p-3 rounded-lg bg-transparent w-full border-none"

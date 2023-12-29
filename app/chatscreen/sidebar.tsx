@@ -5,10 +5,10 @@ import CurrentUser from './components/CurrentUser'
 
 function sidebar() {
   return (
-    <div>
+    <div className='min-w-fit'>
       <CurrentUser/>
       <Search/>
-      <Chats/>
+      <div className='overflow-hidden max-h-[200px]'><Chats/></div>
     </div>
   )
 }
