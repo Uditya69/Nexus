@@ -30,6 +30,7 @@ function Messages() {
   return (
     <div className='flex flex-col'>
       {messages.map((m) => (
+        //@ts-ignore
         <Message message={m} key={m.id} />
       ))}
     </div>
