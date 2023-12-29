@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { ChatContext } from "../context/ChatContext";
 
-import Messages from "./components/Messages";
-import InputTab from "./components/Input";
+import Messages from "@/app/chatscreen/components/Messages";
+import Input from "@/app/chatscreen/components/Input";
 
 function Chat() {
   const { data } = useContext(ChatContext);
@@ -16,7 +16,7 @@ function Chat() {
         <Messages />
       </div>
       <div className="w-full">
-        <InputTab />
+        <Input />
       </div>
     </div>
   );

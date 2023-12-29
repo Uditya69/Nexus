@@ -13,7 +13,7 @@ import React, { useContext, useState } from "react";
 import { IoMdSend } from "react-icons/io";
 import { v4 as uuidv4 } from "uuid"; 
 
-function InputTab() {
+function Input() {
   const [text, setText] = useState("");
 
   const { currentUser } = useContext(AuthContext);
@@ -72,4 +72,4 @@ function InputTab() {
   );
 }
 
-export default InputTab;
+export default Input;
