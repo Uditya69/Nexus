@@ -14,7 +14,6 @@ function Chats() {
     const getChats = () => {
       const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
         console.log("Current data: ", doc.data());
-
         setChats(doc.data());
       });
 
@@ -31,7 +30,8 @@ function Chats() {
   };
   return (
     <div className="chats">
-      {Object.entries(chats)
+      
+      {Object.entries(chats) 
         ?.sort((a, b) => b[1].date - a[1].date)
         .map((chat) => (
           <div
@@ -40,12 +40,13 @@ function Chats() {
             onClick={() => handleSelect(chat[1].userInfo)}
           >
             <img
-              src={chat[1].userInfo.photoURL}
+          src={chat[1].userInfo.photoURL}
               alt=""
               className="h-8 w-8 rounded-full"
             />
             <div>
-              <span className="text-lg">{chat[1].userInfo.displayName}</span>
+              <span className="text-lg">
+                {chat[1].userInfo.displayName}</span>
               <p className="text-sm ms-1 text-zinc-400">
                 {chat[1].lastMessage?.text &&
                 chat[1].lastMessage.text.length > 25
