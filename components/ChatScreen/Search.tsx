@@ -97,14 +97,17 @@ function Search() {
     } finally {
       setUser(null);
       setUsername("");
+      setErr("");
     }
+   
+
   };
 
   return (
     <div>
       <Input
         placeholder="Search a user"
-        className="border-0 border-b-2 border-slate-800"
+        className="border-0 border-b-2 border-slate-800 bg-transparent"
         onChange={(e) => setUsername(e.target.value)}
         onKeyDown={handleKey}
         value={username}
@@ -115,7 +118,7 @@ function Search() {
       {err && <div className="text-red-600 font-mono font-bold">{err}</div>}
       {user && (
         <div
-          className="flex gap-2 border-2 rounded-md p-2 bg-blue-950 cursor-pointer"
+          className="flex gap-2 border-2 rounded-md p-2 cursor-pointer"
           onClick={handleSelect}
         >
           <div>

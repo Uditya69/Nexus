@@ -21,10 +21,9 @@ function Messages() {
     };
   }, [data.chatId]);
 
-  console.log(messages);
 
   if (messages.length === 0) {
-    return <div>Loading messages...</div>;
+    return <div className='mx-[25vw] items-center self-center'>Start a conversation...</div>;
   }
 
   return (

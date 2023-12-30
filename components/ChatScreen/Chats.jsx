@@ -42,7 +42,7 @@ function Chats() {
             <img
           src={chat[1].userInfo.photoURL}
               alt=""
-              className="h-8 w-7  rounded-full"
+              className="h-7 w-7  rounded-full"
             />
             <div>
               <span className="text-lg">

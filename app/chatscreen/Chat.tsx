@@ -8,15 +8,17 @@ function Chat() {
   const { data } = useContext(ChatContext);
 
   return (
-    <div className=" flex flex-col justify-between items-center max-h-screen w-4xl ">
-      <div className="flex items-center justify-center w-full py-4 bg-neutral-950   font-mono">
+    <div className=" flex flex-col justify-between items-center h-[95vh] ">
+      <div className="flex items-center justify-center w-full pt-3  gap-x-5 bg-opacity-10 rounded-tr-xl font-mono">
+      <img src={data.user?.photoURL} alt="" className="h-10 w-10 rounded-full"/>
         <span className="text-2xl ">{data.user?.displayName}</span>
+        
       </div>
       <div className="self-start overflow-y-scroll ">
-        <Messages />
+        {data.user&&(<Messages />)}
       </div>
-      <div className="w-full">
-        <Input />
+      <div className="w-full ">
+        {data.user && (<Input />)}
       </div>
     </div>
   );
