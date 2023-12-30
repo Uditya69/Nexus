@@ -31,9 +31,10 @@ function Login() {
   return (
     <div className="h-screen flex items-center justify-center bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900  ">
       <div className="bg-gradient-to-r from-gray-950 via-gray-900 to-gray-950 p-5 my-auto w-4/5 h-4/5 rounded-xl space-x-5 flex flex-col items-center justify-around">
-        <div className="flex flex-row self-start items-center font-mono text-4xl">
+        
+        <Link href={'/'} ><div className="flex flex-row self-start items-center font-mono text-4xl">
           <Image src={logo} alt="" height={100} /> <p>NEXUS</p>{" "}
-        </div>
+        </div></Link>
 
         <p className="text-4xl font-semibold font-sans">Welcome back!</p>
         <p className="text-lg  mt-14">
