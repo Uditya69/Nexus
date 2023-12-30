@@ -1,7 +1,7 @@
 import React from 'react'
-import Search from './components/Search'
-import Chats from './components/Chats'
-import CurrentUser from './components/CurrentUser'
+import Search from '../../components/ChatScreen/Search'
+import Chats from '../../components/ChatScreen/Chats'
+import CurrentUser from '../../components/ChatScreen/CurrentUser'
 
 function sidebar() {
   return (
