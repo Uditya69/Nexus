@@ -25,7 +25,7 @@ function register() {
     const displayName = e.target[0].value;
     const email = e.target[1].value;
     const password = e.target[2].value;
-    const file = e.target[3].files[0];
+    const file = e.target[4].files[0];
 
     try {
       //Create user
@@ -113,6 +113,7 @@ function register() {
               <Label htmlFor="picture">Profile Picture</Label>
               <Input id="picture" required type="file" />
             </div>
+            <div>
               <Button className="w-fit self-start mx-3">Register</Button>
               <span className="text-xs">
                 (Registration implies{" "}
@@ -124,7 +125,7 @@ function register() {
                 </Link>{" "}
                 consent.)
               </span>
-            
+              </div>
           </form>
         </div>
         <p>
