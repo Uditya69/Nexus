@@ -51,7 +51,7 @@ function Chats() {
                 {chat[1].lastMessage?.text &&
                 chat[1].lastMessage.text.length > 25
                   ? `${chat[1].lastMessage.text.slice(0, 20)}...`
-                  : chat[1].lastMessage.text}
+                  : chat[1].lastMessage?.text}
               </p>
             </div>
           </div>
