@@ -7,18 +7,17 @@ import Link from "next/link";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
-import { auth,db, storage } from "@/firebase";
+import { auth, db, storage } from "@/firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
-
 
 function register() {
   const [err, setErr] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
-//@ts-ignore
-  const handlesubmit=async (e)=>{
+  //@ts-ignore
+  const handlesubmit = async (e) => {
     setLoading(true);
     e.preventDefault();
     const displayName = e.target[0].value;
@@ -32,14 +31,14 @@ function register() {
 
       //Create a unique image name
       const date = new Date().getTime();
-      const storageRef = ref(storage, `${displayName+ date}`);
+      const storageRef = ref(storage, `${displayName + date}`);
 
       await uploadBytesResumable(storageRef, file).then(() => {
         getDownloadURL(storageRef).then(async (downloadURL) => {
           try {
             //Update profile
             await updateProfile(res.user, {
-//@ts-ignore           
+              //@ts-ignore
               displayName,
               photoURL: downloadURL,
             });
@@ -53,7 +52,7 @@ function register() {
 
             //create empty user chats on firestore
             await setDoc(doc(db, "userChats", res.user.uid), {});
-            router.replace('/chatscreen')
+            router.replace("/chatscreen");
           } catch (err) {
             console.log(err);
             setErr(true);
@@ -65,8 +64,7 @@ function register() {
       setErr(true);
       setLoading(false);
     }
-
-  }
+  };
 
   return (
     <div className="h-screen flex items-center justify-center bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900  ">
@@ -80,29 +78,42 @@ function register() {
           Ready to chat? Let's begin by creating your account.
         </p>
 
-        <div className="flex flex-col w-fit  items-center p-3" >
-          
+        <div className="flex flex-col w-fit  items-center p-3">
           <form className="grid space-y-3" onSubmit={handlesubmit}>
             <input
               placeholder="Username"
               required
-              className="rounded-xl p-2 m-2"
+              className="rounded-xl p-2 ps-5 m-2"
             />
             <input
               placeholder="Email-ID"
               required
-              className="rounded-xl p-2 m-2"
+              className="rounded-xl p-2 ps-5 m-2"
             />
-            
-              <input placeholder="password" className="rounded-xl p-2 m-2" />
-            
-            
-          
-          <div className="w-fit mt-2 items-center gap-1">
-            <Label htmlFor="picture">Profile Picture</Label>
-            <Input id="picture" type="file" />
-          </div>
-          <Button className="w-fit self-start mx-3">Register</Button>
+
+            <input
+              placeholder="password"
+              required
+              className="rounded-xl p-2 ps-5 m-2"
+            />
+
+            <div className="w-fit mt-2 items-center gap-1">
+              <Label htmlFor="picture">Profile Picture</Label>
+              <Input id="picture" required type="file" />
+            </div>
+            <div>
+              <Button className="w-fit self-start mx-3">Register</Button>
+              <span className="text-xs">
+                (Registration implies{" "}
+                <Link
+                  href={"/privacypolicy"}
+                  className="underline cursor-pointer text-blue-400 hover:text-blue-700"
+                >
+                  privacy policy
+                </Link>{" "}
+                consent.)
+              </span>
+            </div>
           </form>
         </div>
         <p>
@@ -128,4 +139,3 @@ function setLoading(arg0: boolean) {
 function setErr(arg0: boolean) {
   throw new Error("Function not implemented.");
 }
-
