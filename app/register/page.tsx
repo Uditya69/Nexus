@@ -13,6 +13,8 @@ import { doc, setDoc } from "firebase/firestore";
 import { useRouter } from "next/navigation";
 
 function register() {
+  const [password, setPassword] = useState<string>("");
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   const [err, setErr] = useState(false);
   const [loading, setLoading] = useState(false);
   const router = useRouter();
@@ -90,12 +92,20 @@ function register() {
               required
               className="rounded-xl p-2 ps-5 m-2"
             />
-
-            <input
-              placeholder="password"
-              required
-              className="rounded-xl p-2 ps-5 m-2"
-            />
+            <div className=" flex flex-row items-center gap-x-2">
+              <input
+                placeholder="password"
+                type={showPassword ? "text" : "password"}
+                className="rounded-xl p-2 m-2"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <input
+                type="checkbox"
+                checked={showPassword}
+                onChange={() => setShowPassword(!showPassword)}
+              />{" "}
+              visibility
+            </div>
 
             <div className="w-fit mt-2 items-center gap-1">
               <Label htmlFor="picture">Profile Picture</Label>

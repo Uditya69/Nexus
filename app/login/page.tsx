@@ -8,6 +8,9 @@ import { useRouter } from 'next/navigation'
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "@/firebase";
 function Login() {
+
+  const [password, setPassword] = useState<string>('');
+  const [showPassword, setShowPassword] = useState<boolean>(false);
   
   const [err, setErr] = useState(false);
   const router = useRouter();
@@ -41,8 +44,9 @@ function Login() {
           <div className="grid space-y-3">
             <input placeholder="Email-ID" type="email" className="rounded-xl p-2 m-2" />
             <div className=" flex flex-row items-center gap-x-2">
-              <input placeholder="password" type="password" className="rounded-xl p-2 m-2" />
-              <input type="checkbox" /> visibility
+              <input placeholder="password" type={showPassword ? 'text' : 'password'} className="rounded-xl p-2 m-2" onChange={(e) => setPassword(e.target.value)} />
+              <input type="checkbox" checked={showPassword}
+        onChange={() => setShowPassword(!showPassword)}/> visibility
             </div>
             <Button className="w-fit self-start mx-3">Login</Button>
             {err && <span>Something went wrong</span>}
