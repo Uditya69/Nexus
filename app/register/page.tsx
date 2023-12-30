@@ -113,7 +113,6 @@ function register() {
               <Label htmlFor="picture">Profile Picture</Label>
               <Input id="picture" required type="file" />
             </div>
-            <div>
               <Button className="w-fit self-start mx-3">Register</Button>
               <span className="text-xs">
                 (Registration implies{" "}
@@ -125,7 +124,7 @@ function register() {
                 </Link>{" "}
                 consent.)
               </span>
-            </div>
+            
           </form>
         </div>
         <p>
