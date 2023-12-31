@@ -5,11 +5,11 @@ import CurrentUser from '../../components/ChatScreen/CurrentUser'
 
 function sidebar() {
   return (
-    <div className='min-w-fit'>
+    <div className=''>
 
       <CurrentUser/>
       <Search/>
-      <div className='overflow-hidden max-h-[200px]'><Chats/></div>
+      <div className='overflow-x-scroll max-h-[80vh]'><Chats/></div>
     </div>
   )
 }

@@ -11,6 +11,7 @@ import { auth } from "@/firebase";
 function Navbar() {
   return (
     <div className="flex flex-col place-items-center my-auto gap-5">
+      
       <Link href={"/"} className="hover:bg-black hover:bg-opacity-20 rounded-lg">
         <Image src={logo} alt="" height={50} />{" "}
       </Link>

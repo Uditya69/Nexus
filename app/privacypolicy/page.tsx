@@ -1,5 +1,6 @@
 import React from 'react'
 import { Box, Heading, Text } from '@radix-ui/themes';
+import Link from 'next/link';
 function page() {
   return (
     <>
@@ -49,7 +50,7 @@ function page() {
       <Heading className="text-2xl mt-6 mb-4">Contact Us</Heading>
 
       <Text>
-        If you have any questions or suggestions about our privacy policy, do not hesitate to contact us at [contact@email.com].
+        If you have any questions or suggestions about our privacy policy, do not hesitate to contact us at <Link href={"mailto:hi@uditya.xyz"} className='underline '>[hi@uditya.xyz]</Link>.
       </Text>
     </Box>
   </>

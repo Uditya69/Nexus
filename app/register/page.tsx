@@ -70,11 +70,11 @@ function register() {
 
   return (
     <div className="h-screen flex items-center justify-center bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900  ">
-      <div className="bg-gradient-to-r from-gray-950 via-gray-900 to-gray-950 p-5 w-4/5 h-4/5 rounded-xl space-x-5 flex flex-col items-center justify-around">
-       <Link href={"/"}> 
-        <div className="flex flex-row self-start items-center font-mono text-4xl">
-          <Image src={logo} alt="" height={100} /> <p>NEXUS</p>{" "}
-        </div>
+      <div className="bg-gradient-to-r from-gray-950 via-gray-900 to-gray-950 p-5 w-4/5 h-[85vh] rounded-xl space-x-5 flex flex-col items-center justify-around">
+        <Link href={"/"}>
+          <div className="flex flex-row self-start items-center font-mono text-4xl">
+            <Image src={logo} alt="" height={100} /> <p>NEXUS</p>{" "}
+          </div>
         </Link>
 
         <p className="text-4xl font-semibold font-sans">Hey There!</p>
@@ -82,39 +82,45 @@ function register() {
           Ready to chat? Let's begin by creating your account.
         </p>
 
-        <div className="flex flex-col w-fit  items-center p-3">
-          <form className="grid space-y-3" onSubmit={handlesubmit}>
+        <div className="flex flex-col max-w-[80vw] items-center p-3">
+          <form
+            className="grid space-y-3 items-center p-4  max-w-[80vw]"
+            onSubmit={handlesubmit}
+          >
             <input
               placeholder="Username"
               required
-              className="rounded-xl p-2 ps-5 m-2"
+              className="border-b-2 bg-transparent w-fit p-2 ps-5 m-2"
             />
             <input
               placeholder="Email-ID"
               required
-              className="rounded-xl p-2 ps-5 m-2"
+              className="border-b-2 bg-transparent w-fit p-2 ps-5 m-2"
             />
-            <div className=" flex flex-row items-center gap-x-2">
+            <div className=" flex flex-col gap-x-2">
               <input
                 placeholder="password"
                 type={showPassword ? "text" : "password"}
-                className="rounded-xl p-2 m-2"
+                className=" p-2 m-2 border-b-2 w-fit bg-transparent "
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <input
-                type="checkbox"
-                checked={showPassword}
-                onChange={() => setShowPassword(!showPassword)}
-              />{" "}
-              visibility
+              <div className="flex flex-row items-center self-start ">
+                <input
+                  type="checkbox"
+                  checked={showPassword}
+                  onChange={() => setShowPassword(!showPassword)}
+                  className="mx-4"
+                />{" "}
+                <span>visibility</span>
+              </div>
             </div>
 
             <div className="w-fit mt-2 items-center gap-1">
               <Label htmlFor="picture">Profile Picture</Label>
-              <Input id="picture" required type="file" />
+              <Input id="picture" required type="file" className="" />
             </div>
-            <div>
-              <Button className="w-fit self-start mx-3">Register</Button>
+            <div className="flex flex-col items-center gap-y-2 lg:flex-row">
+              <Button className="w-fit self-start mx-3 hover:bg-gray-300">Register</Button>
               <span className="text-xs">
                 (Registration implies{" "}
                 <Link
@@ -125,7 +131,7 @@ function register() {
                 </Link>{" "}
                 consent.)
               </span>
-              </div>
+            </div>
           </form>
         </div>
         <p>
@@ -135,6 +141,7 @@ function register() {
             target=""
             className="text-blue-400 hover:text-blue-700"
           >
+            {" "}
             Login
           </Link>
         </p>
