@@ -17,7 +17,7 @@ function Navbar() {
       </Link>
 
       <Button className="bg-transparent hover:bg-black hover:bg-opacity-20" onClick={()=>signOut(auth)}>
-        <IoIosLogOut color="white" size={35} />
+        <IoIosLogOut filter="invert(1)" size={35} />
       </Button>
       <ModeToggle  />
     </div>

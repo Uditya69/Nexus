@@ -38,7 +38,7 @@ const Message: React.FC<{ message: MessageProps }> = ({ message }) => {
           alt=""
           className="h-7 w-7 rounded-full"
         />
-        <span className="rounded-3xl border bg-neutral-800 p-3">
+        <span className="rounded-3xl border bg-slate-300 bg-opacity-70 dark:bg-opacity-40 dark:bg-neutral-800 p-3">
           <p>{message.text}</p>
         </span>
       </div>

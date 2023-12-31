@@ -66,7 +66,7 @@ function Input() {
         className=" border-0 bg-transparent hover:bg-transparent"
         onClick={handleSend}
       >
-        <IoMdSend color="white" size="25" />
+        <IoMdSend size="25" />
       </Button>
     </div>
   );

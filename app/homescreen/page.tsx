@@ -7,11 +7,11 @@ import { ArrowRight } from "lucide-react";
 
 function HomeScreen() {
   return (
-    <div >
+    <div>
       <Header />
-      <div className=" flex flex-col font-mono p-5 pt-0 pb-3 items-center ">
-        <div className="flex flex-col lg:flex-row dark:bg-slate-900 justify-between items-center  rounded-lg max-w-screen-2xl bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900">
-          <div className="p-10 max-w-5xl flex flex-col   text-slate-300 space-y-4">
+      <div className=" flex flex-col font-mono p-5 text-gray-700 dark:text-slate-300    pt-0 pb-3 items-center">
+        <div className="flex flex-col md:flex-row lg:flex-row dark:bg-slate-900  justify-between items-center  rounded-lg max-w-screen-2xl    bg-gradient-to-bl from-orange-300 via-yellow-300 to-yellow-500 dark:bg-gradient-to-b dark:from-slate-900 dark:via-blue-900 dark:to-slate-900">
+          <div className="p-10 max-w-5xl flex flex-col    space-y-4">
             <div className="text-5xl  font-extrabold">
               Welcome to <b>NEXUS!</b>
               <br /> Where Privacy Meets Connection. <br />
@@ -26,8 +26,7 @@ function HomeScreen() {
             </div>
             <Link
               href={"/chatscreen"}
-              
-              className="flex p-5 w-fit rounded-lg bg-sky-600 hover:bg-sky-700"
+              className="flex p-5 w-fit rounded-lg bg-orange-500 hover:bg-orange-600 dark:bg-sky-600 dark:hover:bg-sky-700"
             >
               Get chatting Now!
               <ArrowRight className="ml-3" />
@@ -38,23 +37,33 @@ function HomeScreen() {
         <br />
         <br />
         <div className="max-w-screen-2xl  text-lg">
-          <b className="text-3xl ">Why Nexus?</b> <br /><br/>
+          <b className="text-3xl ">Why Nexus?</b> <br />
+          <br />
           <div className="ms-5 text-lg space-y-2 font-sans">
             <p>
-            🔒 <b>Your Privacy Matters:</b> Nexus ensures your messages are yours and yours alone. While we skip the encryption jargon, rest assured that
-            your conversations are handled with utmost care, respecting your
-            need for privacy. </p>
+              🔒 <b>Your Privacy Matters:</b> Nexus ensures your messages are
+              yours and yours alone. While we skip the encryption jargon, rest
+              assured that your conversations are handled with utmost care,
+              respecting your need for privacy.{" "}
+            </p>
             <p>
-            🌐 <b>Seamless Connection: </b>Experience real-time, text-only messaging
-            that effortlessly connects you with friends. No distractions, just
-            pure communication wherever your friends may be.</p> 
-            <p>🌟 <b>Focused Simplicity:</b> Nexus strips away the complexities. It's all
-            about text, allowing you to express yourself without any unnecessary
-            features. Keep it simple, keep it genuine.</p>
-            
-            <p>💬 <b>Express Yourself, Textually:</b> In a world of emojis and multimedia,
-            Nexus champions the power of words. Share thoughts, make plans, and
-            create memories, all through the simplicity of text.</p>
+              🌐 <b>Seamless Connection: </b>Experience real-time, text-only
+              messaging that effortlessly connects you with friends. No
+              distractions, just pure communication wherever your friends may
+              be.
+            </p>
+            <p>
+              🌟 <b>Focused Simplicity:</b> Nexus strips away the complexities.
+              It's all about text, allowing you to express yourself without any
+              unnecessary features. Keep it simple, keep it genuine.
+            </p>
+
+            <p>
+              💬 <b>Express Yourself, Textually:</b> In a world of emojis and
+              multimedia, Nexus champions the power of words. Share thoughts,
+              make plans, and create memories, all through the simplicity of
+              text.
+            </p>
           </div>
         </div>
       </div>
