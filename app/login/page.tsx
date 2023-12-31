@@ -28,7 +28,7 @@ function Login() {
     }
   };
   return (
-    <div className="h-screen flex items-center justify-center bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900  ">
+    <div className="h-screen flex items-center justify-center bg-gradient-to-b from-slate-900 via-blue-900 to-slate-900 text-gray-200 ">
       <NextTopLoader />
 
       <div className="bg-gradient-to-r from-gray-950 via-gray-900 to-gray-950 p-5 my-auto w-4/5 max-w-4xl h-4/5 rounded-xl space-x-5 flex flex-col items-center justify-around">
