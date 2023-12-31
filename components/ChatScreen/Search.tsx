@@ -51,14 +51,11 @@ function Search() {
       setErr("An error occurred");
     } finally {
       setLoading(false);
+      setErr(null);
     }
   };
 
-  const handleKey = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      handleSearch();
-    }
-  };
+ 
 
   const handleSelect = async () => {
     if (!user) return;
@@ -104,12 +101,12 @@ function Search() {
   };
 
   return (
-    <div>
+    <div >
       <Input
         placeholder="Search a user"
         className="border-0 border-b-2 border-slate-800 bg-transparent"
         onChange={(e) => setUsername(e.target.value)}
-        onKeyDown={handleKey}
+        onKeyDown={handleSearch}
         value={username}
       />
       <div className="text-blue-400 font-extrabold font-mono p-2">
