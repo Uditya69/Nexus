@@ -65,8 +65,9 @@ function HomeScreen() {
               text.
             </p>
           </div>
+          <h3 className="text-gray-500 pt-2 text-sm">©{" "}<Link href={'https://uditya.xyz'}target="_blank"className="hover:text-blue-400 " >Uditya.xyz</Link></h3>
         </div>
-      </div>
+      </div> 
     </div>
   );
 }
