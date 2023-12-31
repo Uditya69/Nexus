@@ -120,7 +120,7 @@ function register() {
               <Input id="picture" required type="file" className="" />
             </div>
             <div className="flex flex-col items-center gap-y-2 lg:flex-row">
-              <Button className="w-fit self-start mx-3 hover:bg-gray-300">Register</Button>
+              <Button className="w-fit self-start mx-3 hover:bg-gray-300" >Register</Button>
               <span className="text-xs">
                 (Registration implies{" "}
                 <Link
@@ -133,6 +133,7 @@ function register() {
               </span>
             </div>
           </form>
+          {loading&&(<div> This might take Few seconds please be patient...</div>)}
         </div>
         <p>
           Do have an account?
