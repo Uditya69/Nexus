@@ -12,7 +12,7 @@ function Header() {
         <Image src={logo} alt='' height={70} width={70}/>
       </div>
       <div className='flex items-center space-x-5 px-5 py-3 '>
-     <Link href="/chatscreen"> <PiChats size={30} /></Link>
+     <Link href="/commingsoon"> <PiChats size={30} /></Link>
 
         <ModeToggle />
       </div>

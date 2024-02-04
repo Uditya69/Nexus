@@ -25,7 +25,7 @@ function HomeScreen() {
               real-time messaging, making every moment count.
             </div>
             <Link
-              href={"/chatscreen"}
+              href={"/commingsoon"}
               className="flex p-5 w-fit rounded-lg bg-orange-500 hover:bg-orange-600 dark:bg-sky-600 dark:hover:bg-sky-700"
             >
               Get chatting Now!

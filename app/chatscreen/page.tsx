@@ -16,7 +16,7 @@ function ProtectedRoute({ children }: ProtectedRouteProps) {
   const router = useRouter();
 
   if (!currentUser) {
-    router.replace("/login");
+    router.replace("/commingsoon");
     return null;
   }
 
